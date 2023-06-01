@@ -1,0 +1,35 @@
+{
+   "name": "typeorm",
+   "version": "1.0.0",
+   "description": "",
+   "main": "src/index.ts",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "npx tsc",
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "@supabase/supabase-js": "^2.22.0",
+      "@types/express": "^4.17.17",
+      "axios": "^1.4.0",
+      "concurrently": "^8.0.1",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "image-to-base64": "^2.2.0",
+      "jsonwebtoken": "^9.0.0",
+      "pg": "^8.4.0",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.0",
+      "zod": "^3.21.4"
+   },
+   "devDependencies": {
+      "@types/node": "^16.11.10",
+      "nodemon": "^2.0.22",
+      "typescript": "4.5.2",
+      "ts-node": "^10.9.1"
+   }
+}
