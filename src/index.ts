@@ -35,10 +35,6 @@ AppDataSource.initialize()
         // );
 
 
-        app.use('/', async (req: any, res: any) => {
-            res.json({ data: 'api not working fine...' })
-        })
-
         // ROUTES
         app.use('/api/user', userRouter);
         app.use('/api/allotment', allotmentRouter);
