@@ -38,20 +38,12 @@ const parseAllotment = (plot: any) => {
             "cnic_back": plot.cnic_back,
         },
         costing: {
-            "member_share": plot.member_share,
-            "full_name": plot.full_name,
-            "cnic_no": plot.cnic_no,
-            "relationship_type": plot.relationship_type,
-            "guardian_name": plot.guardian_name,
-            "date_of_birth": plot.date_of_birth,
-            "gender": plot.gender,
-            "address": plot.address,
-            "city": plot.city,
-            "email": plot.email,
-            "phone_no": plot.phone_no,
-            "photo": plot.photo,
-            "cnic_front": plot.cnic_front,
-            "cnic_back": plot.cnic_back,
+            "rate_per_marla": plot.rate_per_marla,
+            "development_charges": plot.development_charges,
+            "special_adjustment": plot.special_adjustment,
+            "rebait_amount": plot.rebait_amount,
+            "dealer_commision": plot.dealer_commision,
+            "installments": plot.installments,
         },
         agent: {
             "agent_name": plot.agent_name,
@@ -63,47 +55,6 @@ const parseAllotment = (plot: any) => {
     return allotment
 }
 
-export class AssignUpdateAgentParams extends BaseHandler {
-    async handle(params: any) {
-
-        const plot: Allotment = params.plot
-        const agent_details = params.agent_details
-
-        Object.assign(plot, agent_details)
-
-        const nextHandlerResponse = await this.callNextHandler(params)
-        return nextHandlerResponse
-    }
-
-}
-
-export class AssignUpdateCostingParams extends BaseHandler {
-    async handle(params: any) {
-
-        const plot: Allotment = params.plot
-        const costing_details = params.costing_details
-
-        Object.assign(plot, costing_details)
-
-        const nextHandlerResponse = await this.callNextHandler(params)
-        return nextHandlerResponse
-    }
-
-}
-
-export class AssignUpdateAllotteeParams extends BaseHandler {
-    async handle(params: any) {
-
-        const plot: Allotment = params.plot
-        const allottee_details = params.allottee_details
-
-        Object.assign(plot, allottee_details)
-
-        const nextHandlerResponse = await this.callNextHandler(params)
-        return nextHandlerResponse
-    }
-
-}
 
 export class AssignUpdatePlotParams extends BaseHandler {
     async handle(params: any) {
