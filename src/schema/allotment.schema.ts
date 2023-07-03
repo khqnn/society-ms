@@ -1,14 +1,13 @@
 import { array, boolean, number, object, string } from 'zod';
 
-const params = {
 
+export const getPlotParams = object({
     params: object({
         id: string(),
     }).strict(),
-};
+})
 
-const query = {
-
+export const indexPlotParams = object({
     query: object({
         plot_type: string().optional(),
         size_category: string().optional(),
@@ -22,41 +21,54 @@ const query = {
         court_case: boolean().optional(),
 
     }).strict(),
-}
+})
 
-const body = {
+export const createPlotParams = object({
     body: object({
-        plot_type: string(),
-        size_category: string(),
-        note_number: string(),
-        plot_number: string(),
-        block: string().optional(),
+        number_of_owners: number(),
+        block: string(),
+        plot_type: string().optional(),
+        size_category: string().optional(),
+        note_number: string().optional(),
+        plot_number: string().optional(),
         kanal: string().optional(),
         marla: string().optional(),
         square_yard: string().optional(),
         corner: boolean().optional(),
         completion_certificate: boolean().optional(),
         court_case: boolean().optional(),
+        attachment: string().optional().nullable(),
+
 
     }).strict(),
-}
-
-
-export const getPlotParams = object({
-    ...params
-});
-export const indexPlotParams = object({
-    ...query
-});
-export const createPlotParams = object({
-    ...body
-});
-export const updatePlotParams = object({
-    ...body,
-    ...params
 })
+
+export const updatePlotParams = object({
+    body: object({
+        number_of_owners: number(),
+        block: string(),
+        plot_type: string().optional(),
+        size_category: string().optional(),
+        note_number: string().optional(),
+        plot_number: string().optional(),
+        kanal: string().optional(),
+        marla: string().optional(),
+        square_yard: string().optional(),
+        corner: boolean().optional(),
+        completion_certificate: boolean().optional(),
+        court_case: boolean().optional(),
+        attachment: string().optional().nullable(),
+
+    }).strict(),
+    params: object({
+        id: string(),
+    }).strict(),
+})
+
 export const deletePlotParams = object({
-    ...params
+    params: object({
+        id: string(),
+    }).strict(),
 })
 
 
