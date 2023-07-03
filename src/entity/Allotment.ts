@@ -20,14 +20,17 @@ export enum SizeCategory {
 @Entity('alloatments')
 export class Allotment extends BaseModel {
 
+    @Column({ type: "int", nullable: false })
+    number_of_owners?: number
+
+    @Column({ length: 200 })
+    block?: string
+
     @Column({ length: 200, nullable: false, unique: true })
     note_number!: string
 
     @Column({ length: 200, nullable: false })
     plot_number!: string
-
-    @Column({ length: 200 })
-    block?: string
 
     @Column({ length: 200 })
     kanal?: string
@@ -50,13 +53,99 @@ export class Allotment extends BaseModel {
     @Column({ length: 1000, nullable: true })
     attachment?: string
 
-    @Column({
-        type: "enum", enum: PlotType, default: PlotType.residential
-    })
-    plot_type!: PlotType
+    @Column({ length: 200, nullable: false })
+    plot_type!: string
 
-    @Column({ type: "enum", enum: SizeCategory, default: SizeCategory["3.5 marla"] })
-    size_category!: SizeCategory
+    @Column({ length: 200, nullable: false })
+    size_category!: string
+
+    // @Column({
+    //     type: "enum", enum: PlotType, default: PlotType.residential
+    // })
+    // plot_type!: PlotType
+
+    // @Column({ type: "enum", enum: SizeCategory, default: SizeCategory["3.5 marla"] })
+    // size_category!: SizeCategory
+
+    /**
+     * Allottee details
+     */
+
+    @Column({ length: 200, nullable: true })
+    member_share?: string
+
+    @Column({ length: 200, nullable: true })
+    full_name?: string
+
+    @Column({ length: 200, nullable: true })
+    cnic_no?: string
+
+    @Column({ length: 200, nullable: true })
+    relationship_type?: string
+
+    @Column({ length: 200, nullable: true })
+    guardian_name?: string
+
+    @Column({ length: 200, nullable: true })
+    date_of_birth?: string
+
+    @Column({ length: 200, nullable: true })
+    gender?: string
+
+    @Column({ length: 200, nullable: true })
+    address?: string
+
+    @Column({ length: 200, nullable: true })
+    city?: string
+
+    @Column({ length: 200, nullable: true })
+    email?: string
+
+    @Column({ length: 200, nullable: true })
+    phone_no?: string
+
+    @Column({ length: 200, nullable: true })
+    photo?: string
+
+    @Column({ length: 200, nullable: true })
+    cnic_front?: string
+
+    @Column({ length: 200, nullable: true })
+    cnic_back?: string
+
+
+    /**
+     * Costing details
+     */
+
+    @Column({ length: 200, nullable: true })
+    rate_per_marla?: string
+
+    @Column({ length: 200, nullable: true })
+    development_charges?: string
+
+    @Column({ length: 200, nullable: true })
+    special_adjustment?: string
+
+    @Column({ length: 200, nullable: true })
+    rebait_amount?: string
+
+    @Column({ length: 200, nullable: true })
+    dealer_commision?: string
+
+    @Column({ type: 'json', nullable: true })
+    installments?: string
+
+
+    /**
+     * Agent details
+     */
+
+    @Column({ length: 200, nullable: true })
+    agent_name?: string
+
+    @Column({ length: 200, nullable: true })
+    agent_cnic?: string
 
 
 }

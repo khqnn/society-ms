@@ -44,8 +44,9 @@ AppDataSource.initialize()
 
         // UNHANDLED ROUTE
         app.all('*', (req: Request, res: Response, next: NextFunction) => {
-            res.status(404).json({ success: false, code: 404, data: {}, message: `Route ${req.originalUrl} not found` })
+            res.status(404).json({ success: false, code: 404, data: {}, message: `Route ${req.originalUrl} not found staging` })
         });
+
 
 
         const port = process.env.PORT || 4000;
