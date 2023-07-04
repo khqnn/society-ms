@@ -86,7 +86,7 @@ export class Allotment extends BaseModel {
     @Column({ length: 200, nullable: true })
     guardian_name?: string
 
-    @Column({ length: 200, nullable: true })
+    @Column({ type: 'date', nullable: true })
     date_of_birth?: string
 
     @Column({ length: 200, nullable: true })
