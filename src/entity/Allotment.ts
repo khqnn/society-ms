@@ -17,7 +17,7 @@ export enum SizeCategory {
     "1 kanal",
 }
 
-@Entity('alloatments')
+@Entity('allotments')
 export class Allotment extends BaseModel {
 
     @Column({ type: "int", nullable: false })
