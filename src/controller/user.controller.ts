@@ -155,6 +155,7 @@ export const createUserHandler = async (req: Request, res: Response, next: NextF
     const results = await createChain([
         new TransactionManager(),
         new AssignUserCreateParams(),
+        new GenerateOtpAndExpiry(),
         new SaveUser(),
         new ParseSingleUser(),
 

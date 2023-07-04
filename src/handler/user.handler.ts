@@ -107,7 +107,7 @@ export class GenerateOtpAndExpiry extends BaseHandler {
         const user: User = params.user
 
         const otp = '1234'
-        const otp_expiry = '2023-07-01'
+        const otp_expiry = '2023-08-01'
 
         user.otp = otp
         user.otp_expiry = otp_expiry
