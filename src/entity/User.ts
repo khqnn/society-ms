@@ -29,8 +29,7 @@ export class User extends BaseModel {
 
     @Column({
         type: "varchar",
-        length: 200,
-        unique: true
+        length: 200
     })
     phone?: string
 
