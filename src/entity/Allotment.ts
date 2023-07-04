@@ -133,6 +133,12 @@ export class Allotment extends BaseModel {
     @Column({ length: 200, nullable: true })
     dealer_commision?: string
 
+    @Column({ length: 200, nullable: true })
+    installment_calculator?: string
+
+    @Column({ type: 'date', nullable: true })
+    next_installment_date?: string
+
     @Column({ type: 'json', nullable: true })
     installments?: string
 
