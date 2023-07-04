@@ -9,6 +9,7 @@ import allotmentRouter from './router/allotment.router'
 import alotteeRouter from './router/alottee.router'
 import mediaRouter from './router/media.router'
 
+const cors = require('cors')
 
 AppDataSource.initialize()
 
@@ -16,6 +17,8 @@ AppDataSource.initialize()
 
         const app = express();
         // MIDDLEWARE
+
+        app.use(cors())
 
         // 1. Body parser
         app.use(express.json({ limit: '30mb' }));
