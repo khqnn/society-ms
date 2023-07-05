@@ -120,9 +120,16 @@ export class ParsePlots extends BaseHandler {
 export class PrepareQueryFilter extends BaseHandler {
     async handle(params: any) {
 
-        const block = params.block
+        const where: any = {}
 
-        params.where = {block}
+        const block = params.block
+        if(params.block){
+            where.block = block
+        }
+
+
+
+        params.where = where
 
         
         const nextHandlerResponse = await this.callNextHandler(params)
