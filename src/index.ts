@@ -47,7 +47,7 @@ AppDataSource.initialize()
 
         // UNHANDLED ROUTE
         app.all('*', (req: Request, res: Response, next: NextFunction) => {
-            res.status(404).json({ success: false, code: 404, data: {}, message: `Route ${req.originalUrl} not found staging` })
+            res.status(404).json({ success: false, code: 404, data: {}, message: `Route ${req.originalUrl} not found main` })
         });
 
 
