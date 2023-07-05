@@ -1,13 +1,14 @@
 import { createChain, TransactionManager } from "../utils/handler"
 import { Request, Response } from "express"
-import { AssignUpdatePlotParams, CreatePlot, DeletePlot, GetPlot, IndexPlots, ParsePlots, UpdatePlot } from "../handler/allotment.handler"
+import { AssignUpdatePlotParams, CreatePlot, DeletePlot, GetPlot, IndexPlots, ParsePlots, PrepareQueryFilter, UpdatePlot } from "../handler/allotment.handler"
 import { Allotment } from "../entity/Allotment"
 
 export const indexPlotsHandler = async (req: Request, res: Response) => {
 
-    const params = {}
+    const params = req.query
     const results = await createChain([
         new TransactionManager(),
+        new PrepareQueryFilter(),
         new IndexPlots(),
         new ParsePlots()
     ]).handle(params)

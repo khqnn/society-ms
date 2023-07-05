@@ -117,13 +117,31 @@ export class ParsePlots extends BaseHandler {
 
 }
 
+export class PrepareQueryFilter extends BaseHandler {
+    async handle(params: any) {
+
+        const block = params.block
+
+        params.where = {block}
+
+        
+        const nextHandlerResponse = await this.callNextHandler(params)
+        return nextHandlerResponse
+    }
+
+}
+
 export class IndexPlots extends BaseHandler {
     async handle(params: any) {
 
         const queryRunner: QueryRunner = params.queryRunner
         const plotRepository = queryRunner.manager.getRepository(Allotment)
 
-        const plots = await plotRepository.find()
+        const where: any = params.where
+
+        const plots = await plotRepository.find({
+            where
+        })
         if (!plots || plots.length == 0) {
             return { success: false, code: 404, message: "Plot(s) not found!", data: {} }
         }
