@@ -7,11 +7,5 @@ Steps to run this project:
 3. Run `npm start` command
 
 Or run with docker-compose  
-`docker-compose up --build`
-
-
-
-
-
-
+`docker-compose up --build
 
