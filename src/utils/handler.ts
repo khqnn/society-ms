@@ -20,19 +20,21 @@ export class TransactionManager extends BaseHandler {
 
         const queryRunner = AppDataSource.createQueryRunner()
         await queryRunner.connect()
-        await queryRunner.startTransaction()
+        // await queryRunner.startTransaction()
 
 
         params.queryRunner = queryRunner
         const nextHandlerResponse = await this.callNextHandler(params)
 
         if (!nextHandlerResponse.success) {
-            queryRunner.rollbackTransaction()
+            // queryRunner.rollbackTransaction()
 
         }
         else {
-            queryRunner.commitTransaction()
+            // queryRunner.commitTransaction()
         }
+
+        await queryRunner.release()
 
         return nextHandlerResponse
     }
