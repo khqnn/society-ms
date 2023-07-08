@@ -9,6 +9,3 @@ Steps to run this project:
 Or run with docker-compose  
 `docker-compose up --build
 
-
-
-
