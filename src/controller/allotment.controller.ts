@@ -1,7 +1,8 @@
 import { createChain, TransactionManager } from "../utils/handler"
 import { Request, Response } from "express"
-import { AssignUpdatePlotParams, CreatePlot, DeletePlot, GetPlot, IndexPlots, ParsePlots, PrepareQueryFilter, UpdatePlot } from "../handler/allotment.handler"
+import { AssignAgentToPlot,  AssignUpdatePlotParams, CreatePlot, DeletePlot, GetPlot, IndexPlots, ParsePlots, PrepareQueryFilter, UpdatePlot } from "../handler/allotment.handler"
 import { Allotment } from "../entity/Allotment"
+import { GetAgent } from "../handler/agent.handler"
 
 export const indexPlotsHandler = async (req: Request, res: Response) => {
 
@@ -57,6 +58,22 @@ export const updatePlotHandler = async (req: Request, res: Response) => {
         new TransactionManager(),
         new GetPlot(),
         new AssignUpdatePlotParams(),
+        new UpdatePlot()
+    ]).handle(params)
+    res.status(results.code).json(results)
+}
+
+export const updatePlotAgentHandler = async (req: Request, res: Response) => {
+
+    const agent_id = req.params.agent_id
+    const plot_id = req.params.allotment_id
+
+    const params = { plot_id, agent_id }
+    const results = await createChain([
+        new TransactionManager(),
+        new GetPlot(),
+        new GetAgent(),
+        new AssignAgentToPlot(),
         new UpdatePlot()
     ]).handle(params)
     res.status(results.code).json(results)

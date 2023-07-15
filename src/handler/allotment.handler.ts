@@ -1,6 +1,7 @@
 import { QueryRunner } from "typeorm"
 import { Allotment, PlotType, SizeCategory } from "../entity/Allotment"
 import { BaseHandler } from "../utils/handler"
+import { Agent } from "../entity/Agent"
 
 const parseAllotment = (plot: any) => {
     const allotment = {
@@ -46,8 +47,9 @@ const parseAllotment = (plot: any) => {
             "installments": plot.installments,
         },
         agent: {
-            "agent_name": plot.agent_name,
-            "agent_cnic": plot.agent_cnic,
+            "agent_name": plot.agent?.agent_name,
+            "agent_cnic": plot.agent?.agent_cnic,
+            "agent_phone": plot.agent?.agent_phone,
         }
 
     }
@@ -63,6 +65,20 @@ export class AssignUpdatePlotParams extends BaseHandler {
         const new_plot = params.new_plot
 
         Object.assign(plot, new_plot)
+
+        const nextHandlerResponse = await this.callNextHandler(params)
+        return nextHandlerResponse
+    }
+
+}
+
+export class AssignAgentToPlot extends BaseHandler {
+    async handle(params: any) {
+
+        const plot: Allotment = params.plot
+        const agent: Agent = params.agent
+
+        plot.agent = agent
 
         const nextHandlerResponse = await this.callNextHandler(params)
         return nextHandlerResponse
@@ -147,8 +163,10 @@ export class IndexPlots extends BaseHandler {
         const where: any = params.where
 
         const plots = await plotRepository.find({
-            where
+            where,
+            relations: {agent: true}
         })
+        
         if (!plots || plots.length == 0) {
             return { success: false, code: 404, message: "Plot(s) not found!", data: {} }
         }

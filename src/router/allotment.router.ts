@@ -1,5 +1,5 @@
 import express from 'express';
-import { createPlotHandler, deletePlotHandler, getPlotHandler, indexPlotsHandler, updatePlotHandler } from '../controller/allotment.controller';
+import { createPlotHandler, deletePlotHandler, getPlotHandler, indexPlotsHandler, updatePlotAgentHandler, updatePlotHandler } from '../controller/allotment.controller';
 
 import { validate } from '../middleware/validate';
 import { createPlotParams, deletePlotParams, getPlotParams, indexPlotParams, updateAllotteeParams, updateCostingParams, updatePlotParams } from '../schema/allotment.schema';
@@ -18,6 +18,8 @@ router.put('/:id/details', validate(updatePlotParams), updatePlotHandler)
 router.put('/:id/allottee', validate(updateAllotteeParams), updatePlotHandler)
 router.put('/:id/costing', validate(updateCostingParams), updatePlotHandler)
 // router.put('/:id/agent', updatePlotHandler)
+router.put('/:allotment_id/agent/:agent_id', updatePlotAgentHandler)
+
 
 router
     .route('/')

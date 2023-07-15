@@ -59,7 +59,7 @@ export const updatePlotParams = object({
         completion_certificate: boolean().optional(),
         court_case: boolean().optional(),
         attachment: string().optional().nullable(),
-
+        agent_id: string().optional().nullable(),
     }).strict(),
     params: object({
         id: string(),

@@ -1,7 +1,8 @@
 
 
-import { Column, Entity } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
 import BaseModel from "./BaseModel";
+import { Agent } from "./Agent";
 
 export enum PlotType {
     "residential",
@@ -153,5 +154,6 @@ export class Allotment extends BaseModel {
     // @Column({ length: 200, nullable: true })
     // agent_cnic?: string
 
-
+    @ManyToOne(()=> Agent, (agent)=> agent.allotments)
+    agent?: Agent
 }
