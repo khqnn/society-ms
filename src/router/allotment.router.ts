@@ -2,7 +2,7 @@ import express from 'express';
 import { createPlotHandler, deletePlotHandler, getPlotHandler, indexPlotsHandler, updatePlotHandler } from '../controller/allotment.controller';
 
 import { validate } from '../middleware/validate';
-import { createPlotParams, deletePlotParams, getPlotParams, indexPlotParams, updatePlotParams } from '../schema/allotment.schema';
+import { createPlotParams, deletePlotParams, getPlotParams, indexPlotParams, updateAllotteeParams, updateCostingParams, updatePlotParams } from '../schema/allotment.schema';
 
 const router = express.Router();
 
@@ -15,9 +15,9 @@ router
     .delete(validate(deletePlotParams), deletePlotHandler)
 
 router.put('/:id/details', validate(updatePlotParams), updatePlotHandler)
-router.put('/:id/allottee', updatePlotHandler)
-router.put('/:id/costing', updatePlotHandler)
-router.put('/:id/agent', updatePlotHandler)
+router.put('/:id/allottee', validate(updateAllotteeParams), updatePlotHandler)
+router.put('/:id/costing', validate(updateCostingParams), updatePlotHandler)
+// router.put('/:id/agent', updatePlotHandler)
 
 router
     .route('/')

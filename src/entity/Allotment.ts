@@ -147,11 +147,11 @@ export class Allotment extends BaseModel {
      * Agent details
      */
 
-    @Column({ length: 200, nullable: true })
-    agent_name?: string
+    // @Column({ length: 200, nullable: true })
+    // agent_name?: string
 
-    @Column({ length: 200, nullable: true })
-    agent_cnic?: string
+    // @Column({ length: 200, nullable: true })
+    // agent_cnic?: string
 
 
 }

@@ -8,6 +8,8 @@ import userRouter from './router/user.router'
 import allotmentRouter from './router/allotment.router'
 import alotteeRouter from './router/alottee.router'
 import mediaRouter from './router/media.router'
+import agentRouter from './router/agent.router'
+
 
 const cors = require('cors')
 
@@ -43,6 +45,7 @@ AppDataSource.initialize()
         app.use('/api/allotment', allotmentRouter);
         app.use('/api/alottee', alotteeRouter);
         app.use('/api/media', mediaRouter);
+        app.use('/api/agent', agentRouter);
 
 
         // UNHANDLED ROUTE
